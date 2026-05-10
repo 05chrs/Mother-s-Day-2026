@@ -168,6 +168,79 @@
       margin: 0;
     }
 
+    .letter-section {
+      margin: 0 0 1.5rem;
+    }
+
+    .letter-section h2 {
+      font-family: "Indie Flower", cursive;
+      font-size: 1rem;
+      font-weight: normal;
+      color: var(--text-muted);
+      margin: 0 0 0.5rem;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .letter-paper {
+      position: relative;
+      background: linear-gradient(180deg, #fffef9 0%, #fdf8f0 100%);
+      border: 1px solid rgba(92, 74, 86, 0.12);
+      border-radius: var(--radius-inner);
+      padding: 1.25rem 1.35rem 1.4rem;
+      box-shadow: 0 2px 12px rgba(92, 74, 86, 0.05);
+      min-height: 6.5rem;
+    }
+
+    .letter-typewriter-wrap {
+      font-family: "Patrick Hand", cursive;
+      font-size: clamp(1.12rem, 2.8vw, 1.28rem);
+      line-height: 1.55;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .letter-output {
+      display: inline;
+    }
+
+    .typewriter-cursor {
+      display: inline-block;
+      margin-left: 1px;
+      font-weight: 300;
+      color: var(--text-muted);
+      animation: cursor-blink 0.95s step-end infinite;
+      vertical-align: text-bottom;
+    }
+
+    .typewriter-cursor.is-done {
+      animation-duration: 1.15s;
+      opacity: 0.75;
+    }
+
+    @keyframes cursor-blink {
+      50% { opacity: 0; }
+    }
+
+    .redeem-hint {
+      font-family: "Patrick Hand", cursive;
+      font-size: clamp(1.02rem, 2.6vw, 1.15rem);
+      line-height: 1.5;
+      text-align: center;
+      color: var(--text-muted);
+      margin: 0 0 1.5rem;
+      padding: 0.85rem 1rem;
+      background: rgba(255, 248, 240, 0.65);
+      border-radius: 14px;
+      border: 1px dashed rgba(92, 74, 86, 0.18);
+    }
+
+    .redeem-hint strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
     .coupon-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -291,6 +364,10 @@
       h1 .emoji-bouquet {
         animation: none !important;
       }
+      .typewriter-cursor {
+        animation: none !important;
+        opacity: 0.5;
+      }
       .coupon {
         transition: box-shadow 0.2s ease;
       }
@@ -321,6 +398,19 @@
         <h1>Happy Mother’s Day, Mom! <span class="emoji-bouquet" aria-hidden="true">💐</span></h1>
         <p class="sub">Here are some coupons 😅💛</p>
       </header>
+
+      <section class="letter-section" aria-label="Personal note">
+        <h2>For you</h2>
+        <div class="letter-paper">
+          <p class="letter-typewriter-wrap" aria-live="polite">
+            <span id="letter-output" class="letter-output"></span><span id="letter-cursor" class="typewriter-cursor" aria-hidden="true">|</span>
+          </p>
+        </div>
+      </section>
+
+      <p class="redeem-hint">
+        When you want to redeem a coupon, <strong>send me a screenshot</strong> of this page and tell me which one — I’ll make it happen.
+      </p>
 
       <section class="coupon-grid" aria-label="Mother’s Day coupons">
         <article class="coupon coupon--pink">
@@ -383,5 +473,51 @@
       </footer>
     </div>
   </div>
+
+  <!-- Edit the letter below: line breaks are kept when the page types it out. -->
+  <template id="letter-source">Dear Mom,
+
+This is placeholder text — swap everything inside this template for your real letter later.
+
+Love you so much</template>
+
+  <script>
+    (function () {
+      var template = document.getElementById("letter-source");
+      var output = document.getElementById("letter-output");
+      var cursor = document.getElementById("letter-cursor");
+      if (!template || !output) return;
+
+      var full = template.content.textContent.replace(/\r\n/g, "\n").trim();
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reduced) {
+        output.textContent = full;
+        if (cursor) {
+          cursor.style.display = "none";
+        }
+        return;
+      }
+
+      var i = 0;
+      var baseDelay = 40;
+
+      function step() {
+        if (i >= full.length) {
+          if (cursor) cursor.classList.add("is-done");
+          return;
+        }
+        var ch = full.charAt(i);
+        i += 1;
+        output.textContent += ch;
+        var delay = baseDelay;
+        if (".!?".indexOf(ch) !== -1) delay += 320;
+        if (ch === "\n") delay += 160;
+        window.setTimeout(step, delay);
+      }
+
+      window.setTimeout(step, 220);
+    })();
+  </script>
 </body>
 </html>
