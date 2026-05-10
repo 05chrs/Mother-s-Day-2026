@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Mother’s Day, Mom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #fff8f0;
+      --cream-deep: #f5ebe0;
+      --pink: #ffd6e8;
+      --lavender: #e8deff;
+      --mint: #d4f5e9;
+      --peach: #ffe4d4;
+      --text: #5c4a56;
+      --text-muted: #8a7a85;
+      --shadow-soft: 0 8px 32px rgba(92, 74, 86, 0.08);
+      --shadow-lift: 0 14px 40px rgba(92, 74, 86, 0.12);
+      --radius-card: 28px;
+      --radius-inner: 18px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: "Patrick Hand", cursive;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 120% 80% at 10% 20%, rgba(255, 214, 232, 0.45) 0%, transparent 50%),
+        radial-gradient(ellipse 100% 60% at 90% 10%, rgba(232, 222, 255, 0.5) 0%, transparent 45%),
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(212, 245, 233, 0.35) 0%, transparent 50%),
+        var(--cream);
+    }
+
+    .blob {
+      position: fixed;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      opacity: 0.35;
+      z-index: -1;
+      pointer-events: none;
+      animation: blob-drift 18s ease-in-out infinite;
+    }
+
+    .blob--1 {
+      width: min(420px, 90vw);
+      height: min(380px, 70vw);
+      background: linear-gradient(135deg, var(--pink), var(--lavender));
+      top: -8%;
+      right: -12%;
+      animation-delay: 0s;
+    }
+
+    .blob--2 {
+      width: min(360px, 75vw);
+      height: min(340px, 65vw);
+      background: linear-gradient(200deg, var(--mint), var(--peach));
+      bottom: -5%;
+      left: -15%;
+      animation-delay: -6s;
+      animation-duration: 22s;
+    }
+
+    @keyframes blob-drift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(12px, -10px) rotate(4deg); }
+      66% { transform: translate(-8px, 8px) rotate(-3deg); }
+    }
+
+    .sparkle {
+      position: absolute;
+      color: rgba(255, 182, 193, 0.85);
+      font-size: 1rem;
+      animation: bob 3.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .sparkle:nth-child(1) { left: 3%; top: 8%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { left: 8%; top: 12%; animation-delay: 0.4s; }
+    .sparkle:nth-child(3) { right: 12%; top: 18%; animation-delay: 0.9s; }
+    .sparkle:nth-child(4) { left: 18%; bottom: 22%; animation-delay: 1.2s; font-size: 0.85rem; }
+    .sparkle:nth-child(5) { right: 6%; bottom: 30%; animation-delay: 0.2s; }
+
+    .float-heart {
+      position: absolute;
+      font-size: 1.35rem;
+      opacity: 0.55;
+      animation: bob 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .float-heart--1 { left: 4%; top: 35%; animation-delay: 0.5s; }
+    .float-heart--2 { right: 5%; top: 42%; animation-delay: 1.4s; }
+    .float-heart--3 { left: 10%; bottom: 8%; animation-delay: 2s; font-size: 1.1rem; }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-10px) rotate(4deg); }
+    }
+
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: clamp(1.25rem, 4vw, 2.5rem);
+      position: relative;
+    }
+
+    .card-shell {
+      position: relative;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      padding: clamp(1.75rem, 5vw, 2.75rem);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    h1 {
+      font-family: "Caveat", cursive;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+      line-height: 1.15;
+      color: #6b4f5f;
+      letter-spacing: 0.02em;
+    }
+
+    h1 .emoji-bouquet {
+      display: inline-block;
+      animation: bob 3s ease-in-out infinite;
+    }
+
+    .sub {
+      font-family: "Indie Flower", cursive;
+      font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .coupon-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 600px) {
+      .coupon-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.35rem;
+      }
+    }
+
+    .coupon {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      border-radius: var(--radius-inner);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(92, 74, 86, 0.06);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+    }
+
+    .coupon:hover {
+      transform: rotate(1.5deg) scale(1.02);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .coupon__body {
+      flex: 1;
+      padding: 1.25rem 1.15rem 1.35rem;
+      min-width: 0;
+    }
+
+    .coupon__icon {
+      font-size: 2.25rem;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .coupon__title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem;
+      color: #4a3d45;
+    }
+
+    .coupon__fine {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .coupon__tear {
+      flex-shrink: 0;
+      width: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 2px dashed rgba(92, 74, 86, 0.22);
+      background: rgba(255, 255, 255, 0.35);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-family: "Indie Flower", cursive;
+    }
+
+    @media (max-width: 599px) {
+      .coupon {
+        flex-direction: column;
+      }
+      .coupon__tear {
+        width: 100%;
+        height: 2.25rem;
+        border-left: none;
+        border-top: 2px dashed rgba(92, 74, 86, 0.22);
+        writing-mode: horizontal-tb;
+        letter-spacing: 0.25em;
+      }
+    }
+
+    .coupon--pink .coupon__body { background: linear-gradient(160deg, var(--pink) 0%, #ffeef6 100%); }
+    .coupon--lavender .coupon__body { background: linear-gradient(160deg, var(--lavender) 0%, #f5f0ff 100%); }
+    .coupon--mint .coupon__body { background: linear-gradient(160deg, var(--mint) 0%, #eefcf6 100%); }
+    .coupon--peach .coupon__body { background: linear-gradient(160deg, var(--peach) 0%, #fff5ee 100%); }
+
+    .coupon--pink .coupon__tear { background: rgba(255, 214, 232, 0.4); }
+    .coupon--lavender .coupon__tear { background: rgba(232, 222, 255, 0.45); }
+    .coupon--mint .coupon__tear { background: rgba(212, 245, 233, 0.45); }
+    .coupon--peach .coupon__tear { background: rgba(255, 228, 212, 0.45); }
+
+    footer {
+      text-align: center;
+      margin-top: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed rgba(92, 74, 86, 0.15);
+    }
+
+    footer p {
+      margin: 0;
+      font-family: "Indie Flower", cursive;
+      font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 28rem;
+      margin-inline: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blob,
+      .sparkle,
+      .float-heart,
+      h1 .emoji-bouquet {
+        animation: none !important;
+      }
+      .coupon {
+        transition: box-shadow 0.2s ease;
+      }
+      .coupon:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="blob blob--1" aria-hidden="true"></div>
+  <div class="blob blob--2" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="card-shell">
+      <span class="sparkle" aria-hidden="true">✦</span>
+      <span class="sparkle" aria-hidden="true">✧</span>
+      <span class="sparkle" aria-hidden="true">✦</span>
+      <span class="sparkle" aria-hidden="true">✧</span>
+      <span class="sparkle" aria-hidden="true">✦</span>
+      <span class="float-heart" aria-hidden="true">💗</span>
+      <span class="float-heart float-heart--1" aria-hidden="true">🌸</span>
+      <span class="float-heart float-heart--2" aria-hidden="true">💕</span>
+      <span class="float-heart float-heart--3" aria-hidden="true">✨</span>
+
+      <header>
+        <h1>Happy Mother’s Day, Mom! <span class="emoji-bouquet" aria-hidden="true">💐</span></h1>
+        <p class="sub">Here are some coupons 😅💛</p>
+      </header>
+
+      <section class="coupon-grid" aria-label="Mother’s Day coupons">
+        <article class="coupon coupon--pink">
+          <div class="coupon__body">
+            <span class="coupon__icon" aria-hidden="true">🍳</span>
+            <h2 class="coupon__title">Cook My Own Meals for a Day</h2>
+            <p class="coupon__fine">Includes one (1) day of not asking “what’s for dinner?” on repeat.</p>
+          </div>
+          <div class="coupon__tear">tear here</div>
+        </article>
+
+        <article class="coupon coupon--lavender">
+          <div class="coupon__body">
+            <span class="coupon__icon" aria-hidden="true">🧺</span>
+            <h2 class="coupon__title">Do My Own Laundry</h2>
+            <p class="coupon__fine">I pinky-promise not to shrink your favorites. Probably.</p>
+          </div>
+          <div class="coupon__tear">tear here</div>
+        </article>
+
+        <article class="coupon coupon--mint">
+          <div class="coupon__body">
+            <span class="coupon__icon" aria-hidden="true">🧹</span>
+            <h2 class="coupon__title">Clean the Whole House</h2>
+            <p class="coupon__fine">“Whole” definitely includes my room… on a generous timeline.</p>
+          </div>
+          <div class="coupon__tear">tear here</div>
+        </article>
+
+        <article class="coupon coupon--peach">
+          <div class="coupon__body">
+            <span class="coupon__icon" aria-hidden="true">🎬</span>
+            <h2 class="coupon__title">Movie Night, Your Pick</h2>
+            <p class="coupon__fine">Popcorn’s on me. Cozy blanket + optional pillow fort included.</p>
+          </div>
+          <div class="coupon__tear">tear here</div>
+        </article>
+      </section>
+
+      <footer>
+        <p>Redeemable whenever I’m home. No expiration because you deserve!</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
