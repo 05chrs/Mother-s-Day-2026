@@ -15,6 +15,8 @@
       --lavender: #e8deff;
       --mint: #d4f5e9;
       --peach: #ffe4d4;
+      --butter: #fff3c9;
+      --sky: #d9eefc;
       --text: #5c4a56;
       --text-muted: #8a7a85;
       --shadow-soft: 0 8px 32px rgba(92, 74, 86, 0.08);
@@ -256,11 +258,15 @@
     .coupon--lavender .coupon__body { background: linear-gradient(160deg, var(--lavender) 0%, #f5f0ff 100%); }
     .coupon--mint .coupon__body { background: linear-gradient(160deg, var(--mint) 0%, #eefcf6 100%); }
     .coupon--peach .coupon__body { background: linear-gradient(160deg, var(--peach) 0%, #fff5ee 100%); }
+    .coupon--sky .coupon__body { background: linear-gradient(160deg, var(--sky) 0%, #f0f9ff 100%); }
+    .coupon--butter .coupon__body { background: linear-gradient(160deg, var(--butter) 0%, #fffbeb 100%); }
 
     .coupon--pink .coupon__tear { background: rgba(255, 214, 232, 0.4); }
     .coupon--lavender .coupon__tear { background: rgba(232, 222, 255, 0.45); }
     .coupon--mint .coupon__tear { background: rgba(212, 245, 233, 0.45); }
     .coupon--peach .coupon__tear { background: rgba(255, 228, 212, 0.45); }
+    .coupon--sky .coupon__tear { background: rgba(217, 238, 252, 0.55); }
+    .coupon--butter .coupon__tear { background: rgba(255, 243, 201, 0.55); }
 
     footer {
       text-align: center;
@@ -349,6 +355,24 @@
             <span class="coupon__icon" aria-hidden="true">🎬</span>
             <h2 class="coupon__title">Movie Night, Your Pick</h2>
             <p class="coupon__fine">Popcorn’s on me. Cozy blanket + optional pillow fort included.</p>
+          </div>
+          <div class="coupon__tear">tear here</div>
+        </article>
+
+        <article class="coupon coupon--sky">
+          <div class="coupon__body">
+            <span class="coupon__icon" aria-hidden="true">🍽️</span>
+            <h2 class="coupon__title">Unload the Dishwasher</h2>
+            <p class="coupon__fine">Yes, including the lids that secretly hate their assigned cabinet.</p>
+          </div>
+          <div class="coupon__tear">tear here</div>
+        </article>
+
+        <article class="coupon coupon--butter">
+          <div class="coupon__body">
+            <span class="coupon__icon" aria-hidden="true">☕</span>
+            <h2 class="coupon__title">Coffee on me</h2>
+            <p class="coupon__fine">Your order, your favorite spot, my treat. Extra foam totally allowed.</p>
           </div>
           <div class="coupon__tear">tear here</div>
         </article>
